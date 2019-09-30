@@ -17,12 +17,18 @@
 
       #stage {
          position: relative;
-         background-image: url('./images/css_animation_exercise_2.png');
+         background-image: url('./images/css_animation_exercise_3.png');
          background-position: center center;
          background-repeat: no-repeat;
          height: 600px;
          width: 600px;
          margin: auto;
+      }
+
+      @keyframes move {
+         0%, 100% {left: 20px;}
+
+         71.428% {left: 500px;}
       }
 
       @keyframes moveright {
@@ -52,7 +58,8 @@
          width: 75px;
          height: 75px;
          border: 1px dashed red;
-         animation: moveright 5s linear, moveleft 2s linear 5s;
+         animation: move 7s linear infinite;
+         /* animation: moveright 5s linear forwards, moveleft 2s linear forwards; */
       }
    </style>
 
@@ -62,7 +69,19 @@
    <div id="stage">
       <div id="hero"></div>
    </div>
+   <script>
+      const hero = document.getElementById('hero');
 
+      const loganimation = (e) => {
+         console.log(e.target.style);
+      }
+
+      const switchAnimation = (e) => {
+         console.log(e.target.style);
+      }
+      hero.addEventListener('animationstart', loganimation);
+      hero.addEventListener('animationend', switchAnimation);
+   </script>
 
 </body>
 
