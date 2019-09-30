@@ -17,18 +17,12 @@
 
       #stage {
          position: relative;
-         background-image: url('./images/css_animation_exercise_3.png');
+         /* background-image: url('./images/css_animation_exercise_4.png');
          background-position: center center;
-         background-repeat: no-repeat;
+         background-repeat: no-repeat; */
          height: 600px;
          width: 600px;
          margin: auto;
-      }
-
-      @keyframes move {
-         0%, 100% {left: 20px;}
-
-         71.428% {left: 500px;}
       }
 
       @keyframes moveright {
@@ -41,13 +35,60 @@
          }
       }
 
-      @keyframes moveleft {
+      @keyframes movedown {
          0% {
-            left: 500px;
+            top: 20px;
          }
 
          100% {
+            top: 200px;
+         }
+      }
+      @keyframes moveleftandturn {
+         0% {
+            top: 200px;
+            left: 500px;
+            transform: none;
+         }
+
+         10% {
+            left: 270px;
+            transform: rotate(-45deg);
+         }
+
+         50% {
+            left: 270px;
+            transform: rotate(-45deg);
+            border-color: red;
+         }
+
+         100% {
+            top: 205px;
             left: 20px;
+            transform: rotate(0deg);
+            border-color: #0900BD;
+         }
+      }
+
+      @keyframes movedownandacross {
+         0% {
+            top: 205px;
+            left: 20px;
+            width: 75px;
+            height: 75px;
+            background:  radial-gradient(#F3EDED, #F3EDED);
+            border-radius: 0;
+            border: 1px dashed #0900BD;
+         }
+
+         100% {
+            top: 443px;
+            left: 443px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(#FBDA61, #F76B1C);
+            border-radius: 50%;
+            border: 1px solid #F76B1C;
          }
       }
 
@@ -58,8 +99,10 @@
          width: 75px;
          height: 75px;
          border: 1px dashed red;
-         animation: move 7s linear infinite;
-         /* animation: moveright 5s linear forwards, moveleft 2s linear forwards; */
+         animation: moveright 5s ease-in-out forwards,
+                    movedown 2s ease-in-out 5s forwards,
+                    moveleftandturn 5s ease-in-out 7s forwards,
+                    movedownandacross 5s ease-in-out 12s forwards;
       }
    </style>
 
@@ -69,20 +112,5 @@
    <div id="stage">
       <div id="hero"></div>
    </div>
-   <script>
-      const hero = document.getElementById('hero');
-
-      const loganimation = (e) => {
-         console.log(e.target.style);
-      }
-
-      const switchAnimation = (e) => {
-         console.log(e.target.style);
-      }
-      hero.addEventListener('animationstart', loganimation);
-      hero.addEventListener('animationend', switchAnimation);
-   </script>
-
 </body>
-
 </html>
